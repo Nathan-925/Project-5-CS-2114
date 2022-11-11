@@ -21,14 +21,16 @@ public class DoublyLinkedList<T> implements Iterable<T> {
     }
     
     public boolean remove(T value) {
-        if(firstNode != null && firstNode.getValue() == value) {
+        if(firstNode != null && firstNode.getValue().equals(value)) {
             firstNode = firstNode.getNext();
-            firstNode.setPrevious(null);
+            if(firstNode != null) {
+                firstNode.setPrevious(null);
+            }
             size--;
             return true;
         }
         ListNode<T> current = firstNode;
-        while(current != null && current.getValue() != value) {
+        while(current != null && !current.getValue().equals(value)) {
             current = current.getNext();
         }
         if(current == null) {
@@ -66,7 +68,7 @@ public class DoublyLinkedList<T> implements Iterable<T> {
         return -1;
     }
     
-    public int getSize() {
+    public int size() {
         return size;
     }
     
@@ -114,12 +116,12 @@ public class DoublyLinkedList<T> implements Iterable<T> {
     
     public String toString() {
         ListNode<T> current = firstNode;
-        String s = "";
+        String s = "[";
         while(current != null) {
-            s += current.getValue().toString()+" ";
+            s += current.getValue()+", ";
             current = current.getNext();
         }
-        return s;
+        return s.substring(0, s.length()-2)+"]";
     }
     
     private class ListNode<T> {
