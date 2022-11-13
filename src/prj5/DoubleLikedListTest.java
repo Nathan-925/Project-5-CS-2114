@@ -6,14 +6,27 @@ import java.util.Iterator;
 import java.util.Random;
 import student.TestCase;
 
+/**
+ * Test class for DoublyLinkedList
+ * 
+ * @author Nathaniel Dunlap (nathan925)
+ * @version 11/13/2022
+ *
+ */
 public class DoubleLikedListTest extends TestCase {
 
     private DoublyLinkedList<Integer> list;
     
+    /**
+     * Sets up the test methods
+     */
     public void setUp() {
         list = new DoublyLinkedList<>();
     }
     
+    /**
+     * Tests add and remove
+     */
     public void testAddAndRemove() {
         ArrayList<Integer> tests = new ArrayList<>();
         Random rand = new Random();
@@ -30,6 +43,9 @@ public class DoubleLikedListTest extends TestCase {
         assertFalse(list.remove(1));
     }
     
+    /**
+     * Tests get
+     */
     public void testGet() {
         for(int i = 0; i < 20; i++) {
             list.add(i);
@@ -47,6 +63,9 @@ public class DoubleLikedListTest extends TestCase {
         assertNotNull(exc);
     }
     
+    /**
+     * Tests indexOf
+     */
     public void testIndexOf() {
         for(int i = 0; i < 20; i++) {
             list.add(i);
@@ -57,6 +76,9 @@ public class DoubleLikedListTest extends TestCase {
         assertEquals(-1, list.indexOf(100));
     }
     
+    /**
+     * Tests size
+     */
     public void testSize() {
         for(int i = 0; i < 20; i++) {
             assertEquals(i, list.size());
@@ -64,12 +86,18 @@ public class DoubleLikedListTest extends TestCase {
         }
     }
     
+    /**
+     * Tests clear
+     */
     public void testClear() {
         list.add(1);
         list.clear();
         assertEquals(0, list.size());
     }
     
+    /**
+     * Tests toString
+     */
     public void testToString() {
         for(int i = 0; i < 5; i++) {
             list.add(i);
@@ -77,6 +105,9 @@ public class DoubleLikedListTest extends TestCase {
         assertEquals("[0, 1, 2, 3, 4]", list.toString());
     }
     
+    /**
+     * Tests sort
+     */
     public void testSort() {
         list.add(1);
         list.add(5);
