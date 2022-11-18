@@ -118,8 +118,47 @@ public class MonthData implements Comparable<MonthData> {
      */
     @Override
     public int compareTo(MonthData obj) {
-        
-        return 0;
+        if (this.views > obj.views) {
+            return 1;
+        }
+        else if (this.views < obj.views) {
+            return -1;
+        }
+        else {
+            if (this.comments > obj.comments) {
+                return 1;
+            }
+            else if (obj.comments > this.comments) {
+                return -1;
+            }
+            else {
+                if (this.posts > obj.posts) {
+                    return 1;
+                }
+                else if (this.posts < obj.posts) {
+                    return -1;
+                }
+                else {
+                    if (this.likes > this.likes) {
+                        return 1;
+                    }
+                    else if (this.likes < obj.likes) {
+                        return -1;
+                    }
+                    else {
+                        if (this.followerCount > obj.followerCount) {
+                            return 1;
+                        }
+                        else if (this.followerCount < obj.followerCount) {
+                            return -1;
+                        }
+                        else {
+                            return month.compareTo(obj.month);
+                        }
+                    }
+                }
+            }
+        }
     }
 
 }
