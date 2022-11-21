@@ -62,9 +62,33 @@ public class UserTest extends TestCase {
      * Tests the following method to ensure it meets expectations.
      */
     public void testAdd() {
-        assertEquals(test.getData().size(), 0);
+        assertEquals(test.getMonthData().size(), 0);
         MonthData jan = new MonthData("January", 13, 500, 2, 0, 1000);
         test.addData(jan);
-        assertEquals(test.getData().size(), 1);
+        assertEquals(test.getMonthData().size(), 1);
+    }
+
+
+    /**
+     * Tests getFirstQuarterTraditionalEngagement
+     */
+    public void testGetFirstQuarterTraditionalEngagement() {
+        test.addData(new MonthData("January", 1000, 100, 100, 100, 100));
+        test.addData(new MonthData("February", 1000, 100, 100, 100, 100));
+        test.addData(new MonthData("March", 1000, 100, 100, 100, 100));
+        test.addData(new MonthData("May", 1000, 100, 100, 100, 100));
+        assertEquals(60.0, test.getFirstQuarterTraditionalEngagement(), 1);
+    }
+
+
+    /**
+     * Tests getFirstQuarterReachEngagement
+     */
+    public void testGetFirstQuarterReachEngagement() {
+        test.addData(new MonthData("January", 1000, 100, 100, 100, 100));
+        test.addData(new MonthData("February", 1000, 100, 100, 100, 100));
+        test.addData(new MonthData("March", 1000, 100, 100, 100, 1000));
+        test.addData(new MonthData("May", 1000, 100, 100, 100, 1000));
+        assertEquals(50.0, test.getFirstQuarterReachEngagement(), 1);
     }
 }

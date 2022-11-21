@@ -9,7 +9,7 @@ package prj5;
 /**
  * Represents a social media user with posts.
  * 
- * @author Zachary Milne (zmilne)
+ * @author Zachary Milne (zmilne), Nathaniel Dunlap (nathan925)
  * @version 2022.11.11
  */
 public class User {
@@ -95,6 +95,56 @@ public class User {
      */
     public String getMainTopic() {
         return mainTopic;
+    }
+
+
+    /**
+     * Returns the linked list of month data
+     * 
+     * @return the linked list of month data
+     */
+    public DoublyLinkedList<MonthData> getMonthData() {
+        return data;
+    }
+
+
+    /**
+     * Returns the traditional engagement for the first quarter
+     * 
+     * @return the traditional engagement for the first quarter
+     */
+    public double getFirstQuarterTraditionalEngagement() {
+        double engagement = 0;
+        double followers = 0;
+        for (MonthData month : data) {
+            if (month.getMonth().equals("January") || month.getMonth().equals(
+                "February") || month.getMonth().equals("March")) {
+                engagement += month.getComments() + month.getLikes();
+                if (month.getMonth().equals("March")) {
+                    followers = month.getFollowerCount();
+                }
+            }
+        }
+        return (engagement / followers) * 100;
+    }
+
+
+    /**
+     * Returns the reach engagement for the first quarter
+     * 
+     * @return the reach engagement for the first quarter
+     */
+    public double getFirstQuarterReachEngagement() {
+        double engagement = 0;
+        double reach = 0;
+        for (MonthData month : data) {
+            if (month.getMonth().equals("January") || month.getMonth().equals(
+                "February") || month.getMonth().equals("March")) {
+                engagement += month.getComments() + month.getLikes();
+                reach += month.getViews();
+            }
+        }
+        return (engagement / reach) * 100;
     }
 
 }
