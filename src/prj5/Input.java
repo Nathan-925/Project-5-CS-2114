@@ -1,3 +1,9 @@
+// Virginia Tech Honor Code Pledge:
+//
+// As a Hokie, I will conduct myself with honor and integrity at all times.
+// I will not lie, cheat, or steal, nor will I accept the actions of those who
+// do.
+// -- Nathan Dunlap (nathan925)
 package prj5;
 
 import java.io.File;
@@ -52,33 +58,6 @@ public class Input {
             }
         }
 
-        users.sort((n, m) -> String.CASE_INSENSITIVE_ORDER.compare(n
-            .getChannelName(), m.getChannelName()));
-        for (User u : users) {
-            System.out.println(u.getChannelName());
-            if (Double.isFinite(u.getFirstQuarterTraditionalEngagement())) {
-                System.out.printf("traditional: %.1f%n", u
-                    .getFirstQuarterTraditionalEngagement());
-            }
-            else {
-                System.out.println("traditional: N/A");
-            }
-            System.out.println("==========");
-        }
-        System.out.println("**********");
-        System.out.println("**********");
-        users.sort((n, m) -> Double.compare(m.getFirstQuarterReachEngagement(),
-            n.getFirstQuarterReachEngagement()));
-        for (User u : users) {
-            System.out.println(u.getChannelName());
-            if (Double.isFinite(u.getFirstQuarterReachEngagement())) {
-                System.out.printf("reach: %.1f%n", u
-                    .getFirstQuarterReachEngagement());
-            }
-            else {
-                System.out.println("reach: N/A");
-            }
-            System.out.println("==========");
-        }
+        GUI gui = new GUI(users);
     }
 }

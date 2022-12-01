@@ -1,3 +1,9 @@
+// Virginia Tech Honor Code Pledge:
+//
+// As a Hokie, I will conduct myself with honor and integrity at all times.
+// I will not lie, cheat, or steal, nor will I accept the actions of those who
+// do.
+// -- Nathan Dunlap (nathan925)
 package prj5;
 
 import java.util.Comparator;
@@ -26,7 +32,8 @@ public class DoublyLinkedList<T> implements Iterable<T> {
      */
     public void add(T value) {
         if (firstNode == null) {
-            firstNode = lastNode = new ListNode(null, value, null);
+            firstNode = new ListNode(null, value, null);
+            lastNode = firstNode;
             size++;
             return;
         }
@@ -223,13 +230,13 @@ public class DoublyLinkedList<T> implements Iterable<T> {
         }
 
 
-        public void setNext(ListNode nextNode) {
-            this.nextNode = nextNode;
+        public void setNext(ListNode next) {
+            nextNode = next;
         }
 
 
-        public void setPrevious(ListNode previousNode) {
-            this.previousNode = previousNode;
+        public void setPrevious(ListNode previous) {
+            previousNode = previous;
         }
 
 

@@ -1,3 +1,9 @@
+// Virginia Tech Honor Code Pledge:
+//
+// As a Hokie, I will conduct myself with honor and integrity at all times.
+// I will not lie, cheat, or steal, nor will I accept the actions of those who
+// do.
+// -- Nathan Dunlap (nathan925)
 package prj5;
 
 import student.TestCase;
@@ -60,8 +66,8 @@ public class MonthDataTest extends TestCase {
             100)) > 0);
         assertTrue(month.compareTo(new MonthData("March", 1000, 100, 100, 100,
             100)) < 0);
-        assertTrue(month.compareTo(new MonthData("March", 1000, 100, 10, 100,
-            100)) == 0);
+        assertEquals(0, month.compareTo(new MonthData("March", 1000, 100, 10,
+            100, 100)));
     }
 
 }
