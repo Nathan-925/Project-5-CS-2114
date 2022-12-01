@@ -77,7 +77,8 @@ public class UserTest extends TestCase {
         test.addData(new MonthData("February", 1000, 100, 100, 100, 100));
         test.addData(new MonthData("March", 1000, 100, 100, 100, 100));
         test.addData(new MonthData("May", 1000, 100, 100, 100, 100));
-        assertEquals(60.0, test.getFirstQuarterTraditionalEngagement(), 1);
+        assertEquals(60.0, test.getTraditionalEngagement(new String[] {
+            "January", "February", "March" }), 1);
     }
 
 
@@ -89,6 +90,7 @@ public class UserTest extends TestCase {
         test.addData(new MonthData("February", 1000, 100, 100, 100, 100));
         test.addData(new MonthData("March", 1000, 100, 100, 100, 1000));
         test.addData(new MonthData("May", 1000, 100, 100, 100, 1000));
-        assertEquals(50.0, test.getFirstQuarterReachEngagement(), 1);
+        assertEquals(50.0, test.getReachEngagement(new String[] { "January",
+            "February", "March" }), 1);
     }
 }

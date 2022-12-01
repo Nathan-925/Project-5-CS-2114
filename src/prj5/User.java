@@ -109,20 +109,17 @@ public class User {
 
 
     /**
-     * Returns the traditional engagement for the first quarter
+     * Returns the traditional engagement for the input months
      * 
-     * @return the traditional engagement for the first quarter
+     * @return the traditional engagement for the input months
      */
-    public double getFirstQuarterTraditionalEngagement() {
+    public double getTraditionalEngagement(String... months) {
         double engagement = 0;
         double followers = 0;
         for (MonthData month : data) {
-            if (month.getMonth().equals("January") || month.getMonth().equals(
-                "February") || month.getMonth().equals("March")) {
+            if (arrayContains(months, month.getMonth())) {
                 engagement += month.getComments() + month.getLikes();
-                if (month.getMonth().equals("March")) {
-                    followers = month.getFollowerCount();
-                }
+                followers = month.getFollowerCount();
             }
         }
         return (engagement / followers) * 100;
@@ -130,21 +127,30 @@ public class User {
 
 
     /**
-     * Returns the reach engagement for the first quarter
+     * Returns the reach engagement for the input months
      * 
-     * @return the reach engagement for the first quarter
+     * @return the reach engagement for the input months
      */
-    public double getFirstQuarterReachEngagement() {
+    public double getReachEngagement(String... months) {
         double engagement = 0;
         double reach = 0;
         for (MonthData month : data) {
-            if (month.getMonth().equals("January") || month.getMonth().equals(
-                "February") || month.getMonth().equals("March")) {
+            if (arrayContains(months, month.getMonth())) {
                 engagement += month.getComments() + month.getLikes();
                 reach += month.getViews();
             }
         }
         return (engagement / reach) * 100;
+    }
+
+
+    private boolean arrayContains(String[] arr, String searchFor) {
+        for (String s : arr) {
+            if (s.equals(searchFor)) {
+                return true;
+            }
+        }
+        return false;
     }
 
 }
